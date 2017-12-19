@@ -2,6 +2,7 @@
   background-image: url("http://www.ismotors.com/graphics/home/ism-clean-auto-shop-01.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 0px;
 }
 
 .jumbotron .container {
@@ -12,3 +13,4 @@ h1 {
   color: black;
   font-size: 85px;
 }
+
