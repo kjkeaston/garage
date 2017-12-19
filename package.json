@@ -1,0 +1,25 @@
+{
+  "name": "garage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjkeaston/garage.git"
+  },
+  "author": "Kyle & Sherif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjkeaston/garage/issues"
+  },
+  "homepage": "https://github.com/kjkeaston/garage#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.7"
+  }
+}
