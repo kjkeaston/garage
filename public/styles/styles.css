@@ -1,16 +1,16 @@
 .jumbotron {
-  background-image: url("http://www.ismotors.com/graphics/home/ism-clean-auto-shop-01.jpg");
+  background-image: url("http://www.orlandospeedworld.org/wp-content/uploads/2016/03/car1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 0px;
 }
 
 .jumbotron .container {
-  height: 250px;
+  height: 350px;
 }
 
 h1 {
-  color: black;
-  font-size: 85px;
+  color: yellow;
+  font-size: 90px;
 }
 

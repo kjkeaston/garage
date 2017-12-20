@@ -59,28 +59,95 @@
 
       <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
-          <form>
-            <ul>
-              <label for="make">Make</label>
-              <input type="text" id="make">
 
-              <label for="model">Model</label>
-              <input type="text" id="model">
+          <div class="row">
 
-              <label for="year">Year</label>
-              <input type="text" id="year">
+            <!-- text input fields -->
+            <div class="col-md-6">
+              <form>
+                <ul>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <label for="make">Make</label>
+                      <input type="text" id="make">
+                    
+                      <label for="model">Model</label>
+                      <input type="text" id="model">
+                    </div>
+                  </div>
 
-              <label for="color">Color</label>
-              <input type="text" id="color">
-              
-              <label for="image">Image</label>
-              <input type="text" id="image">
-            <ul>
-          </form>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <label for="year">Year</label>
+                      <input type="text" id="year">
+
+                      <label for="color">Color</label>
+                      <input type="text" id="color">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <label for="image">Image</label>
+                      <input type="text" id="image">
+                    </div>
+                  </div>
+                </ul>
+              </form>
+            </div>
+
+            <!-- Category selections -->
+            <div class="col-md-6">
+              <form>
+                <h4>Add vehicle categories</h4>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">Luxury
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">Sport
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Muscle
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Exotic
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">SUV
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Pick-up
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Sedan
+                  </label>
+                </div>
+              </form>
+              <button>Add new vehicle</button>
+            </div>
+
+        <!-- End row -->
         </div>
+      <!-- End card body class -->
       </div>
+    <!-- End collapseOne -->
     </div>
+    <!-- End card -->
   </div>
+<!-- End accordian -->
+</div>
 
 <section class="container">
   <div class="row all-vehicles">
