@@ -32,15 +32,15 @@ let allVehicles = [
 		model: "S-Class",
 		year: "2016",
 		color: "Silver",
-		img: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg",
-    categories: [allCategories[0], allCategories[6]]
+		image: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg",
+    categories: [allCategories[0], allCategories[6]] //{name: "luxury"}
 	},
   {
     make: "BMW",
     model: "M5",
     year: "2017",
     color: "White",
-    img: "https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/05/bmw-m5-tire-stickers-520x338.jpg",
+    image: "https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/05/bmw-m5-tire-stickers-520x338.jpg",
     categories: [allCategories[0], allCategories[1], allCategories[6]]
   },
   {
@@ -48,7 +48,7 @@ let allVehicles = [
     model: "Defender",
     year: "1997",
     color: "Black",
-    img: "http://www.defendersource.com/forum/images/dto_garage/users/5810/1076.jpg",
+    image: "http://www.defendersource.com/forum/images/dto_garage/users/5810/1076.jpg",
     categories: [allCategories[0] ,allCategories[4]]
   }
 ];
