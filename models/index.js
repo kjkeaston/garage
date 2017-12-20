@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/garage', {useMongoClient: true});
 
 mongoose.Promise = global.Promise;
 
-var Vehicle = require('./vehicle');
-var Category = require('./category');
+let Vehicle = require('./vehicle');
+let Category = require('./category');
 
 module.exports = {
   Vehicle: Vehicle,
