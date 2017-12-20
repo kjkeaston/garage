@@ -24,8 +24,9 @@ $(document).ready(function() {
 
     // let carCategories = [];
 
-
-
+    // ['Luxury', 'Sports'] ===> 'Luxury, Sports'
+    // use .map and .join
+    
     let carHTML = 
     `<div class="card" style="width: 20rem;">
       <img class="card-img-top" src=${vehicle.image}> 
