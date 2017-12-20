@@ -2,8 +2,8 @@ let db = require('./models');
 
 let vehicles = [
 	{
-		make: "Mercedez-benz",
-		model: "S class",
+		make: "Mercedes-Benz",
+		model: "S-Class",
 		year: "2016",
 		color: "Silver",
 		img: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg"
