@@ -28,11 +28,11 @@ let allCategories = [
 
 let allVehicles = [
 	{
-		make: "Mercedes-Benz",
-		model: "S-Class",
-		year: "2016",
-		color: "Silver",
-		image: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg",
+	make: "Mercedes-Benz",
+	model: "S-Class",
+	year: "2016",
+	color: "Silver",
+	image: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg",
     categories: [allCategories[0], allCategories[6]] //{name: "luxury"}
 	},
   {

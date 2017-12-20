@@ -29,7 +29,19 @@ app.get('/api/vehicles/:id', function show (req, res) {
   });
 });
 
-
+app.post('/api/vehicles', function (req, res) {
+  var newVehicle = new db.Vehicle({
+    make: req.body.make,
+    model: req.body.model,
+    color: req.body.color,
+    year: req.body.year,
+    image: req.body.image,
+    categories: req.body.categories
+  });
+  newVehicle.save(function (err, newVehicleInDb) {
+    res.json(newVehicleInDb);
+  });
+});
 
 
 app.listen(process.env.PORT || 3000, function () {

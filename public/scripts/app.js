@@ -21,13 +21,6 @@ $(document).ready(function() {
 
 
   function renderVehicle (vehicle) {
-
-    // let carCategories = [];
-
-    // [{name: 'Luxury'}, {name: 'Sports'}] ===> ['Luxury', 'Sports'] ===> 'Luxury, Sports'
-    // use .map and .join
-
-    
     
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
@@ -47,11 +40,27 @@ $(document).ready(function() {
     </div>`
 
   $('.all-vehicles').prepend(carHTML);
-
   }
   
 
 
+  $('#add-new-vehicle-button').on('click', function(e) {
+  	console.log ('new vehicle created');
+  	$.ajax({
+  		method: 'POST',
+  		url: '/api/vehicles',
+  		data: $('#add-new-vehicle-button').serialize(),
+  		success: postNewVehicle,
+  		error: addNewVehicleError
+  	})
+  })
+
+  function postNewVehicle(newVehicle) {
+  	renderVehicle(newVehicle);
+  }
+  function addNewVehicleError(err) {
+  	console.log ('Error: ' + err);
+  }
 
 
 });
