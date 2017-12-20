@@ -23,7 +23,11 @@ app.get('/api/vehicles', function index(req, res) {
   })
 });
 
-
+app.get('/api/vehicles/:id', function show (req, res) {
+  db.Vehicle.find({_id: req.params.id}, function(err, data) {
+    res.json(data);
+  });
+});
 
 
 
