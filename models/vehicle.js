@@ -16,3 +16,8 @@ let Category = require('./category');
  let Vehicle = mongoose.model('Vehicle', VehicleSchema);
 
 module.exports = Vehicle;
+
+// categories: {
+//     type: Schema.Types.ObjectId,
+//     ref: 'Category'
+//   }
