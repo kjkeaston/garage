@@ -1,21 +1,19 @@
 let db = require('./models');
 
-
 let vehicles = [
 	{
-		make: "Mercedes-benz",
-		model: "S class",
+		make: "Mercedes-Benz",
+		model: "S-Class",
 		year: "2016",
 		color: "Silver",
-		img: "url",
-    	categories: []
+		img: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg"
 	},
   {
     make: "BMW",
     model: "M5",
     year: "2017",
     color: "White",
-    img: "https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/05/bmw-m5-tire-stickers-520x338.jpg",
+    img: "https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/05/bmw-m5-tire-stickers-520x338.jpg"
   },
   {
     make: "Land Rover",
