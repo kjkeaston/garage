@@ -1,10 +1,11 @@
-var express = require('express');
+let express = require('express');
 	  db = require('./models');
 	  bodyParser = require('body-parser');
 
-var app = express();
+let app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static('public', {root: __dirname}));
 
 
