@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var Category = require('./category');
+var Category = require('./category.js');
 
  // Vehicle Schema
  var VehicleSchema = new Schema({
