@@ -1,26 +1,16 @@
 var express = require('express');
-	  app = express();
+	  db = require('./models');
+	  bodyParser = require('body-parser');
 
-var bodyParser = require('body-parser');
+var app = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static('public', {root: __dirname}));
-
 
 
 app.get('/', function homepage(req, res) {
 	res.sendFile(__dirname + '/views/index.html');
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
