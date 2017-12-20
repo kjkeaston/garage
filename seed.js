@@ -3,7 +3,7 @@ let db = require('./models');
 
 let vehicles = [
 	{
-		make: "Mercedez-benz",
+		make: "Mercedes-benz",
 		model: "S class",
 		year: "2016",
 		color: "Silver",
