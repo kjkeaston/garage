@@ -37,7 +37,7 @@ $(document).ready(function() {
         <button class="edit-btn btn-outline-info" data-id=${vehicle._id}>Edit</button>
         <button class="save-btn btn btn-outline-success" data-id=${vehicle._id}>Save</button>
         <button class="delete-btn btn-outline-danger" data-id=${vehicle._id}>Delete</button>
-      </div>`
+    </div>`
 
   $('.all-vehicles').prepend(carHTML);
   }
