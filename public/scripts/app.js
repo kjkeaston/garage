@@ -29,7 +29,7 @@ $(document).ready(function() {
 	    
     let carHTML = 
     `<div class="card" style="width: 20rem;">
-      <img class="card-img-top" src=${vehicle.image}> 
+      <img class="card-img-top vehicle-image" src=${vehicle.image}> 
         <h3 class="card-title">${vehicle.make}</h3>
         <h4 class="card-text">${vehicle.model}</h4>
         <h5 class="card-text">${vehicle.year}, ${vehicle.color}</h5>
@@ -44,13 +44,13 @@ $(document).ready(function() {
   
 
 
-  $('#add-new-vehicle-button').on('click', function(e) {
+  $('#add-new-vehicle-form').on('submit', function(e) {
   	e.preventDefault();
-  	console.log ('new vehicle ' , $(this).val());
+  	console.log ('new vehicle ' , $(this).serialize());
   	$.ajax({
   		method: 'POST',
   		url: '/api/vehicles',
-  		data: $('#add-new-vehicle-button').val(),
+  		data: $('#add-new-vehicle-form').serialize(),
   		success: postNewVehicle,
   		error: addNewVehicleError
   	})

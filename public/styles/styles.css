@@ -14,3 +14,7 @@ h1 {
   font-size: 90px;
 }
 
+.vehicle-image {
+	height: 210px;
+	width: 320px;
+}
