@@ -28,13 +28,12 @@ $(document).ready(function() {
     newValues = newValues.join(', ');
 	    
     let carHTML = 
-    `<div id="vehicle-card" class="card" id="${vehicle._id}" style="width: 20rem;">
-      <img id="vehicle.image" class="card-img-top vehicle-image" src=${vehicle.image}> 
-        <h3 id="vehicle.make" class="card-title">${vehicle.make}</h3>
-        <h4 id="vehicle.model" class="card-text">${vehicle.model}</h4>
-        <h5 id="vehicle.year" class="card-text">${vehicle.year}</h5> 
-        <h5 id="vehicle.color" class="card-text">${vehicle.color}</h5>
-        <p id="vehicle.newValues" class="card-text">${newValues}</p>
+    `<div class="card" id="${vehicle._id}" style="width: 20rem;">
+      <img class="card-img-top vehicle-image" src=${vehicle.image}> 
+        <h3 class="card-title">${vehicle.make}</h3>
+        <h4 class="card-text">${vehicle.model}</h4>
+        <h5 id="vehicle.year" class="card-text">${vehicle.year}, ${vehicle.color}</h5> 
+        <p class="card-text">${newValues}</p>
         <button class="edit-vehicle btn btn-primary" data-id=${vehicle._id}>Edit</button>
         <button class="save-vehicle btn btn-success" data-id=${vehicle._id}>Save</button>
         <button class="delete-vehicle btn btn-danger" data-id=${vehicle._id}>Delete</button>
