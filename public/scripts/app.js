@@ -24,18 +24,19 @@ $(document).ready(function() {
     
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
-	});
+    });
+
     newValues = newValues.join(', ');
 	    
     let carHTML = 
-    `<div class="card" style="width: 20rem;">
+    `<div class="card whole-vehicle-card" style="width: 20rem;">
       <img class="card-img-top vehicle-image" src=${vehicle.image}> 
         <h3 class="card-title">${vehicle.make}</h3>
         <h4 class="card-text">${vehicle.model}</h4>
         <h5 class="card-text">${vehicle.year}, ${vehicle.color}</h5>
-        <p class="card-text">${newValues}</p>
-        <button>Edit</button>
-        <button>Delete</button>
+        <p class="card-text new-cats">${newValues}</p>
+        <button class="edit-btn btn-outline-info">Edit</button>
+        <button class="delete-btn btn-outline-danger">Delete</button>
       </div>
     </div>`
 
@@ -46,7 +47,8 @@ $(document).ready(function() {
 
   $('#add-new-vehicle-form').on('submit', function(e) {
   	e.preventDefault();
-  	console.log ('new vehicle ' , $(this).serialize());
+  	console.log ('new vehicle ', $(this).serialize());
+
   	$.ajax({
   		method: 'POST',
   		url: '/api/vehicles',
@@ -63,6 +65,19 @@ $(document).ready(function() {
   function addNewVehicleError(err) {
   	console.log ('Error: ' + err);
   }
+
+// let newCats = [];
+//     for (let i = 1; i < 8; i++) {
+//       if ($(`#checkbox${i}`).is(`:checked`) === true) {
+//       newCats.push($(`#checkbox${i}`).val());
+//       }
+//     }
+//     console.log(newCats); // array works fine in console
+//     $(".new-cats").html(newCats.join(", "));
+    // console.log($(`#checkbox${i}`).val());
+
+
+
 
 
 });

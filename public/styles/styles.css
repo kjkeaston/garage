@@ -17,10 +17,23 @@ h1 {
 .vehicle-image {
 	height: 210px;
 	width: 320px;
+  border-radius: 20px;
+}
+
+.whole-vehicle-card {
+  margin: 10px;
+  border-radius: 20px;
 }
 
 .categories-nav-buttons {
   align-content: center;
   padding: 5px 20px;
   margin-right: 50px;
+}
+
+.edit-btn, .delete-btn  {
+  margin: 10px;
+  width: 100px;
+  border-radius: 20px;
+  align-self: center;
 }
