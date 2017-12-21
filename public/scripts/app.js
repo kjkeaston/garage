@@ -135,10 +135,9 @@ $(document).ready(function() {
   }
 
 
-// >>>>>>>>>>>>>>> muscle filtering
-
+// Filter by vehicle category
   $(".categories-nav-btn").on("click", function () {
-    console.log($(this).attr("value"));
+    // console.log($(this).attr("value"));
     let category = $(this).attr("value");
 
     $.ajax({
@@ -154,16 +153,20 @@ $(document).ready(function() {
       $(".all-vehicles").empty();
       newCatCars.forEach(renderVehicle);
     }
-
   })
 
+// All vehicles from filter nav bar
+  $("#all-categories-btn").on("click", function() {
+      $.ajax({
+      method: 'GET',
+      url: '/api/vehicles',
+      success: onSuccess,
+      error: function getError (data) {
+        console.log("error getting vehicles" + data);
+      }
+    });
+  });
 
-
-
-
-
-
-  // >>>>>>>>>>>>>>>>>>>
 
 
 });
