@@ -19,3 +19,8 @@ h1 {
 	width: 320px;
 }
 
+.categories-nav-buttons {
+  align-content: center;
+  padding: 5px 20px;
+  margin-right: 50px;
+}
