@@ -31,7 +31,7 @@ h1 {
   margin-right: 50px;
 }
 
-.edit-btn, .delete-btn  {
+.edit-btn, .delete-btn, .save-btn  {
   margin: 10px;
   width: 100px;
   border-radius: 20px;

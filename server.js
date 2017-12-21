@@ -23,14 +23,14 @@ app.get('/api/vehicles', function index(req, res) {
   })
 });
 
-app.get('/api/vehicles/:id', function show (req, res) {
+app.get('/api/vehicles/:id', function show(req, res) {
   db.Vehicle.find({_id: req.params.id}, function(err, data) {
     res.json(data);
   });
 });
 
 
-app.post('/api/vehicles', function (req, res) {
+app.post('/api/vehicles', function create(req, res) {
   var newVehicle = new db.Vehicle({
     image: req.body.image,
     make: req.body.make,
@@ -44,6 +44,35 @@ app.post('/api/vehicles', function (req, res) {
     res.json(newVehicleInDb);
   });
 });
+
+
+app.delete('/api/vehicles/:id', function destroy(req, res) {
+    var vehicleId = req.params.id;
+    db.Vehicle.findByIdAndRemove(vehicleId, function (err, deletedVehicle) {
+      res.json(deletedVehicle);
+    });
+});
+
+
+app.put('/api/vehicles/:id', function update(req, res) {
+  var vehicleId = req.params.id;
+  db.vehicle.findById(vehicleId, function (err, foundVehicle) {
+    foundVehicle.make = req.body.make;
+    foundVehicle.model = req.body.model;
+    foundVehicle.year = req.body.year;
+    foundVehicle.color = req.body.color;
+    foundVehicle.newValues = req.body.newValues;
+    foundVehicle.save(function (err, savedVehicle) {
+
+    res.json(savedVehicle);
+
+    });
+  });
+});
+
+
+
+
 
 
 
