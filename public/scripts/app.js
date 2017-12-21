@@ -25,7 +25,6 @@ $(document).ready(function() {
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
     });
-
     newValues = newValues.join(', ');
 	    
     let carHTML = 
@@ -63,19 +62,12 @@ $(document).ready(function() {
   	console.log(newVehicle);
   	renderVehicle(newVehicle);
   }
+
   function addNewVehicleError(err) {
-  	console.log ('Error: ' + err);
+  	console.log ('Error adding vehicle: ' + err);
   }
 
-// let newCats = [];
-//     for (let i = 1; i < 8; i++) {
-//       if ($(`#checkbox${i}`).is(`:checked`) === true) {
-//       newCats.push($(`#checkbox${i}`).val());
-//       }
-//     }
-//     console.log(newCats); // array works fine in console
-//     $(".new-cats").html(newCats.join(", "));
-//     console.log($(`#checkbox${i}`).val());
+
 
 
 
@@ -89,7 +81,7 @@ $(document).ready(function() {
 		success: deleteVehicleSuccess,
 		error: deleteVehicleError
 	});
-  });
+});
 
   function deleteVehicleSuccess (deletedVehicle) {
   	console.log (deletedVehicle);
@@ -98,7 +90,7 @@ $(document).ready(function() {
   }
 
   function deleteVehicleError (err) {
-  	console.log(err);
+  	console.log("Error deleting vehicle: " + err);
   }
 
   $('.all-vehicles').on('click', '.edit-btn', handleVehicleEditClick);
@@ -142,7 +134,7 @@ $(document).ready(function() {
 
 
   function editVehicleError (err) {
-  	console.log ('Error: ' + err);
+  	console.log ('Error edit vehicle: ' + err);
   }
 
 
