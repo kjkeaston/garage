@@ -54,18 +54,17 @@ app.delete('/api/vehicles/:id', function destroy(req, res) {
 
 
 app.put('/api/vehicles/:id', function update(req, res) {
-  var vehicleId = req.params.id;
-  db.vehicle.findById(vehicleId, function (err, foundVehicle) {
-    foundVehicle.make = req.body.make;
-    foundVehicle.model = req.body.model;
-    foundVehicle.year = req.body.year;
-    foundVehicle.color = req.body.color;
-    foundVehicle.newValues = req.body.newValues;
-    foundVehicle.save(function (err, savedVehicle) {
+  db.Vehicle.findByIdAndUpdate(req.params.id, {
+      image: req.body.image,
+      make: req.body.make,
+      model: req.body.model,
+      year: req.body.year,
+      color: req.body.color,
+      categories: req.body.categories
+    }, {new: true}, function (err, updatedVehicle) {
 
-    res.json(savedVehicle);
+    res.json(updatedVehicle);
 
-    });
   });
 });
 
