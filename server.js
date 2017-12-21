@@ -70,6 +70,16 @@ app.put('/api/vehicles/:id', function update(req, res) {
   });
 });
 
+app.get('/api/vehicles_by_category/:category', function index(req, res) {
+  db.Vehicle.find({"categories": {$elemMatch: {name: req.params.category}}} , function(err, data) {
+    console.log('Err', err, 'Data', data);
+    if (err) {
+      console.log(err)
+    }
+    res.json(data);
+  })
+});
+
 
 
 
