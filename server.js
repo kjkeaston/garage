@@ -45,6 +45,15 @@ app.post('/api/vehicles', function (req, res) {
 });
 
 
+app.delete('/api/vehicles/:id', function(req, res) {
+    var vehicleId = req.params.id;
+    db.Vehicle.findByIdAndRemove(vehicleId, function (err, deletedVehicle) {
+      res.json(deletedVehicle);
+    });
+});
+
+
+
 app.listen(process.env.PORT || 3000, function () {
 	console.log ('Express server is up and running on http://localhost:3000/');
 });

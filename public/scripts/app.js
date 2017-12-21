@@ -28,14 +28,14 @@ $(document).ready(function() {
     newValues = newValues.join(', ');
 	    
     let carHTML = 
-    `<div class="card" style="width: 20rem;">
+    `<div class="card" id="${vehicle._id}" style="width: 20rem;">
       <img class="card-img-top vehicle-image" src=${vehicle.image}> 
         <h3 class="card-title">${vehicle.make}</h3>
         <h4 class="card-text">${vehicle.model}</h4>
         <h5 class="card-text">${vehicle.year}, ${vehicle.color}</h5>
         <p class="card-text">${newValues}</p>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button class="edit-vehicle btn btn-primary">Edit</button>
+        <button class="delete-vehicle btn btn-danger" data-id=${vehicle._id}>Delete</button>
       </div>
     </div>`
 
@@ -64,5 +64,27 @@ $(document).ready(function() {
   	console.log ('Error: ' + err);
   }
 
+
+  $('.all-vehicles').on('click', '.delete-vehicle', function(e) {
+
+  		console.log('delete button clicked');
+
+  		$.ajax({
+  			method: 'DELETE',
+  			url: '/api/vehicles/' + $('.delete-vehicle').attr('data-id'),
+  			success: deleteVehicleSuccess,
+  			error: deleteVehicleError
+  		});
+  });
+
+  function deleteVehicleSuccess (deletedVehicle) {
+  	console.log (deletedVehicle);
+  	var deletedVehicleId = deletedVehicle._id;
+  	$(`#${deletedVehicleId}`).remove();
+  }
+
+  function deleteVehicleError (err) {
+  	console.log(err);
+  }
 
 });
