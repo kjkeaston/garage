@@ -145,7 +145,7 @@ $(document).ready(function() {
       url: "/api/vehicles_by_category/" + category,
       success: muscleFilterSuccess,
       error: function muscleFilterError (data) {
-        console.log("Error filtering for Muscle: " + data);
+        console.log("Error filtering for category: " + data);
       }
     })
 
