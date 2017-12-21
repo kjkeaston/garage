@@ -36,13 +36,13 @@
 
 <!-- Nav for filtering vehicle categories -->
   <nav class="navbar navbar-dark bg-dark">
-    <form class="form-inline text-center">
-      <button class="btn btn-outline-info" type="button">Muscle</button>
-      <button class="btn btn-outline-info" type="button">Exotic</button>
-      <button class="btn btn-outline-info" type="button">SUV</button>
-      <button class="btn btn-outline-info" type="button">Luxury</button>
-      <button class="btn btn-outline-info" type="button">Pick-up</button>
-      <button class="btn btn-outline-info" type="button">Sport</button>
+    <form class="form-inline">
+      <button class="btn btn-outline-info categories-nav-buttons" type="button">Muscle</button>
+      <button class="btn btn-outline-info categories-nav-buttons" type="button">Exotic</button>
+      <button class="btn btn-outline-info categories-nav-buttons" type="button">SUV</button>
+      <button class="btn btn-outline-info categories-nav-buttons" type="button">Luxury</button>
+      <button class="btn btn-outline-info categories-nav-buttons" type="button">Pick-up</button>
+      <button class="btn btn-outline-info categories-nav-buttons" type="button">Sport</button>
     </form>  
   </nav>
 
@@ -57,7 +57,7 @@
         </h5>
       </div>
 
-      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <form id="add-new-vehicle-form">
             <div class="row">
@@ -77,7 +77,7 @@
                   <div class="row">
                     <div class="col-md-12 text-center">
                       <label for="year">Year</label>
-                      <input name="year" type="text" id="year">
+                      <input name="year" type="number" id="year">
 
                       <label for="color">Color</label>
                       <input name="color" type="text" id="color">
@@ -97,43 +97,43 @@
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="Luxury" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">Luxury
+                  <input name="categories[0][name]" class="form-check-input" type="checkbox" id="checkbox1" value="Luxury">Luxury
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="Sport" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">Sport
+                  <input name="categories[1][name]" class="form-check-input" type="checkbox" id="checkbox2" value="Sport">Sport
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="Muscle" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Muscle
+                  <input name="categories[2][name]" class="form-check-input" type="checkbox" id="checkbox3" value="Muscle">Muscle
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="Exotic" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Exotic
+                  <input name="categories[3][name]" class="form-check-input" type="checkbox" id="checkbox4" value="Exotic">Exotic
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="SUV" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">SUV
+                  <input name="categories[4][name]" class="form-check-input" type="checkbox" id="checkbox5" value="SUV">SUV
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="Pick-up" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Pick-up
+                  <input name="categories[5][name]" class="form-check-input" type="checkbox" id="checkbox6" value="Pick-up">Pick-up
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                   <label class="form-check-label">
-                  <input name="Sedan" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">Sedan
+                  <input name="categories[6][name]" class="form-check-input" type="checkbox" id="checkbox7" value="Sedan">Sedan
                   </label>
                 </div>
               </div>

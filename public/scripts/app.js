@@ -23,11 +23,12 @@ $(document).ready(function() {
   function renderVehicle (vehicle) {
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
-	});
+		});
     newValues = newValues.join(', '); // 'Luxury, Sport'
 	    
     let carHTML = 
-    `<div class="card" id="${vehicle._id}" style="width: 20rem;">
+
+    `<div class="card whole-vehicle-card" id="${vehicle._id}" style="width: 20rem;">
       <img class="card-img-top vehicle-image" src=${vehicle.image}> 
         <h3 class="card-title">${vehicle.make}</h3>
         <h4 class="card-text">${vehicle.model}</h4>
@@ -141,7 +142,8 @@ $(document).ready(function() {
 
   $('#add-new-vehicle-form').on('submit', function(e) {
   	e.preventDefault();
-  	console.log ('new vehicle ' , $(this).serialize());
+  	console.log ('new vehicle ', $(this).serialize());
+
   	$.ajax({
   		method: 'POST',
   		url: '/api/vehicles',
@@ -155,20 +157,26 @@ $(document).ready(function() {
   	console.log(newVehicle);
   	renderVehicle(newVehicle);
   }
+
   function addNewVehicleError(err) {
-  	console.log ('Error: ' + err);
+  	console.log ('Error adding vehicle: ' + err);
   }
 
 
-  $('.all-vehicles').on('click', '.delete-vehicle', function(e) {
+
+
+
+
+
+  $('.all-vehicles').on('click', '.delete-btn', function(e) {
   	console.log('delete button clicked');
 	$.ajax({
 		method: 'DELETE',
-		url: '/api/vehicles/' + $('.delete-vehicle').attr('data-id'),
+		url: '/api/vehicles/' + $('.delete-btn').attr('data-id'),
 		success: deleteVehicleSuccess,
 		error: deleteVehicleError
 	});
-  });
+});
 
   function deleteVehicleSuccess (deletedVehicle) {
   	console.log (deletedVehicle);
@@ -177,9 +185,8 @@ $(document).ready(function() {
   }
 
   function deleteVehicleError (err) {
-  	console.log(err);
+  	console.log("Error deleting vehicle: " + err);
   }
-
 
   $('.all-vehicles').on('click', '.edit-vehicle', function handleVehicleEditClick(e) {
 		console.log ('edit button clicked');
@@ -199,19 +206,13 @@ $(document).ready(function() {
 	});
 	
 
-
   function editVehicleSuccess (editedVehicle) {
-  	console.log (editedVehicle);
-  	
-  	// var editDataId = vehicle._id;
-  	// $(`#${editDataId}`).
   	renderVehicle(editedVehicle);
   }
 
 
-
   function editVehicleError (err) {
-  	console.log ('Error: ' + err);
+  	console.log ('Error edit vehicle: ' + err);
   }
 
 

@@ -29,6 +29,7 @@ app.get('/api/vehicles/:id', function show(req, res) {
   });
 });
 
+
 app.post('/api/vehicles', function create(req, res) {
   var newVehicle = new db.Vehicle({
     image: req.body.image,
@@ -36,7 +37,7 @@ app.post('/api/vehicles', function create(req, res) {
     model: req.body.model,
     year: req.body.year,
     color: req.body.color,
-    categories: req.body.newValues
+    categories: req.body.categories
   });
   newVehicle.save(function (err, newVehicleInDb) {
     console.log(newVehicleInDb);
