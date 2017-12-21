@@ -28,13 +28,15 @@ $(document).ready(function() {
     newValues = newValues.join(', ');
 	    
     let carHTML = 
-    `<div class="card" id="${vehicle._id}" style="width: 20rem;">
-      <img class="card-img-top vehicle-image" src=${vehicle.image}> 
-        <h3 class="card-title">${vehicle.make}</h3>
-        <h4 class="card-text">${vehicle.model}</h4>
-        <h5 class="card-text">${vehicle.year}, ${vehicle.color}</h5>
-        <p class="card-text">${newValues}</p>
-        <button class="edit-vehicle btn btn-primary">Edit</button>
+    `<div id="vehicle-card" class="card" id="${vehicle._id}" style="width: 20rem;">
+      <img id="vehicle.image" class="card-img-top vehicle-image" src=${vehicle.image}> 
+        <h3 id="vehicle.make" class="card-title">${vehicle.make}</h3>
+        <h4 id="vehicle.model" class="card-text">${vehicle.model}</h4>
+        <h5 id="vehicle.year" class="card-text">${vehicle.year}</h5> 
+        <h5 id="vehicle.color" class="card-text">${vehicle.color}</h5>
+        <p id="vehicle.newValues" class="card-text">${newValues}</p>
+        <button class="edit-vehicle btn btn-primary" data-id=${vehicle._id}>Edit</button>
+        <button class="save-vehicle btn btn-success" data-id=${vehicle._id}>Save</button>
         <button class="delete-vehicle btn btn-danger" data-id=${vehicle._id}>Delete</button>
       </div>
     </div>`
@@ -66,15 +68,13 @@ $(document).ready(function() {
 
 
   $('.all-vehicles').on('click', '.delete-vehicle', function(e) {
-
-  		console.log('delete button clicked');
-
-  		$.ajax({
-  			method: 'DELETE',
-  			url: '/api/vehicles/' + $('.delete-vehicle').attr('data-id'),
-  			success: deleteVehicleSuccess,
-  			error: deleteVehicleError
-  		});
+  	console.log('delete button clicked');
+	$.ajax({
+		method: 'DELETE',
+		url: '/api/vehicles/' + $('.delete-vehicle').attr('data-id'),
+		success: deleteVehicleSuccess,
+		error: deleteVehicleError
+	});
   });
 
   function deleteVehicleSuccess (deletedVehicle) {
@@ -86,5 +86,50 @@ $(document).ready(function() {
   function deleteVehicleError (err) {
   	console.log(err);
   }
+
+  $('.all-vehicles').on('click', '.edit-vehicle', handleVehicleEditClick);
+
+  	function handleVehicleEditClick(e) {
+  		console.log ('edit button clicked');
+  		// $('.save-vehicle').toggleClass('show');
+  		// $('.edit-vehicle').toggleClass('hidden');
+  		var data = {
+  			 		image: $('#vehicle.image').serialize(),
+					make: $('#vehicle.make').serialize(),
+					model: $('#vehicle.model').serialize(),
+					year: $('#vehicle.year').serialize(),
+					color: $('#vehicle.color').serialize(),
+					categories: $('#vehicle.newValues').serialize()
+  		}
+ 
+	  
+
+	  $('.all-vehicles').on('click', '.save-vehicle', handleVehicleSaveClick);
+
+	  function handleVehicleSaveClick(e) {
+	  	$.ajax({
+	  		method: 'PUT',
+	  		url: '/api/vehicles/' + $('#vehicle-card').attr('data-id'),
+	  		data: data,
+	  		success: editVehicleSuccess,
+	  		error: editVehicleError
+	  	});
+	  }
+
+	}
+
+
+  function editVehicleSuccess (editedVehicle) {
+  	console.log (editedVehicle);
+  	//$('#vehicle-card').attr('data-id').remove();
+  	renderVehicle(editedVehicle);
+  }
+
+
+
+  function editVehicleError (err) {
+  	console.log ('Error: ' + err);
+  }
+
 
 });
