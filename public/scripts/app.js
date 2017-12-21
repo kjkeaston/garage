@@ -138,18 +138,19 @@ $(document).ready(function() {
 // >>>>>>>>>>>>>>> muscle filtering
 
   $(".categories-nav-btn").on("click", function () {
-    let category = $(".categories-nav-btn").attr("value");
+    console.log($(this).attr("value"));
+    let category = $(this).attr("value");
 
     $.ajax({
       method: "GET",
       url: "/api/vehicles_by_category/" + category,
-      success: muscleFilterSuccess,
-      error: function muscleFilterError (data) {
+      success: categoryFilterSuccess,
+      error: function categoryFilterError (data) {
         console.log("Error filtering for category: " + data);
       }
     })
 
-    function muscleFilterSuccess (newCatCars) {
+    function categoryFilterSuccess (newCatCars) {
       $(".all-vehicles").empty();
       newCatCars.forEach(renderVehicle);
     }
