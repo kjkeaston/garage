@@ -31,14 +31,15 @@ app.get('/api/vehicles/:id', function show (req, res) {
 
 app.post('/api/vehicles', function (req, res) {
   var newVehicle = new db.Vehicle({
+    image: req.body.image,
     make: req.body.make,
     model: req.body.model,
-    color: req.body.color,
     year: req.body.year,
-    image: req.body.image,
-    categories: req.body.categories
+    color: req.body.color,
+    categories: req.body.newValues
   });
   newVehicle.save(function (err, newVehicleInDb) {
+    console.log(newVehicleInDb);
     res.json(newVehicleInDb);
   });
 });

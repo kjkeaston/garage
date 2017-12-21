@@ -45,17 +45,19 @@ $(document).ready(function() {
 
 
   $('#add-new-vehicle-button').on('click', function(e) {
-  	console.log ('new vehicle created');
+  	e.preventDefault();
+  	console.log ('new vehicle ' , $(this).val());
   	$.ajax({
   		method: 'POST',
   		url: '/api/vehicles',
-  		data: $('#add-new-vehicle-button').serialize(),
+  		data: $('#add-new-vehicle-button').val(),
   		success: postNewVehicle,
   		error: addNewVehicleError
   	})
   })
 
   function postNewVehicle(newVehicle) {
+  	console.log(newVehicle);
   	renderVehicle(newVehicle);
   }
   function addNewVehicleError(err) {
