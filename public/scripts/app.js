@@ -21,7 +21,6 @@ $(document).ready(function() {
 
 
   function renderVehicle (vehicle) {
-    
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
     });
@@ -131,11 +130,39 @@ $(document).ready(function() {
   	renderVehicle(editedVehicle);
   }
 
-
-
   function editVehicleError (err) {
   	console.log ('Error edit vehicle: ' + err);
   }
+
+
+// >>>>>>>>>>>>>>> muscle filtering
+
+  $(".categories-nav-btn").on("click", function () {
+    let category = $(".categories-nav-btn").attr("value");
+
+    $.ajax({
+      method: "GET",
+      url: "/api/vehicles_by_category/" + category,
+      success: muscleFilterSuccess,
+      error: function muscleFilterError (data) {
+        console.log("Error filtering for Muscle: " + data);
+      }
+    })
+
+    function muscleFilterSuccess (newCatCars) {
+      $(".all-vehicles").empty();
+      newCatCars.forEach(renderVehicle);
+    }
+
+  })
+
+
+
+
+
+
+
+  // >>>>>>>>>>>>>>>>>>>
 
 
 });
