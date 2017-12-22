@@ -205,13 +205,6 @@ $(document).ready(function() {
 	
 
   function editVehicleSuccess (editedVehicle) {
-  	//debugger;
-
-  	// OPTION 2
-  	// remove all cars from the container
-  	// get all cars again from DB (ajax)
-  	// render each car
-
   	$('.all-vehicles').empty();
 
   	$.ajax({
@@ -236,6 +229,40 @@ $(document).ready(function() {
   function editVehicleError (err) {
   	console.log ('Error edit vehicle: ' + err);
   }
+
+
+// Filter by vehicle category
+  $(".categories-nav-btn").on("click", function () {
+    // console.log($(this).attr("value"));
+    let category = $(this).attr("value");
+
+    $.ajax({
+      method: "GET",
+      url: "/api/vehicles_by_category/" + category,
+      success: categoryFilterSuccess,
+      error: function categoryFilterError (data) {
+        console.log("Error filtering for category: " + data);
+      }
+    })
+
+    function categoryFilterSuccess (newCatCars) {
+      $(".all-vehicles").empty();
+      newCatCars.forEach(renderVehicle);
+    }
+  })
+
+// All vehicles from filter nav bar
+  $("#all-categories-btn").on("click", function() {
+      $.ajax({
+      method: 'GET',
+      url: '/api/vehicles',
+      success: onSuccess,
+      error: function getError (data) {
+        console.log("error getting vehicles" + data);
+      }
+    });
+  });
+
 
 
 });
