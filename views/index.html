@@ -51,13 +51,20 @@
 <!-- Add new vehicle section -->
   <div id="accordion" role="tablist">
     <div class="card">
-      <div class="card-header" role="tab" id="headingOne">
+      <!-- <div class="card-header" role="tab" id="headingOne">
         <h5 class="mb-0">
-          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <a class="btn-block" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             Click to add new vehicles!
           </a>
         </h5>
-      </div>
+      </div> -->
+      <button class="card-header btn-outline-primary btn-block" data-toggle="collapse" href="#collapseOne"  aria-expanded="true" aria-controls="collapseOne" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          Click to add new vehicles!
+        </h5>
+      </button>
+
+
 
       <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
@@ -68,26 +75,26 @@
                 <ul>
                   <div class="row">
                     <div class="col-md-12 text-center">
-                      <label for="make">Make</label>
+                      <label class="input-label" for="make">Make</label>
                       <input name="make" type="text" id="make">
-                    
-                      <label for="model">Model</label>
+                      
+                      <label class="input-label" for="model">Model</label>
                       <input name="model" type="text" id="model">
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-md-12 text-center">
-                      <label for="year">Year</label>
+                      <label class="input-label" for="year">Year</label>
                       <input name="year" type="number" id="year">
 
-                      <label for="color">Color</label>
+                      <label class="input-label" for="color">Color</label>
                       <input name="color" type="text" id="color">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12 text-center">
-                      <label for="image">Image</label>
+                      <label for="image">Image URL</label>
                       <input name="image" type="text" id="image">
                     </div>
                   </div>
@@ -144,14 +151,14 @@
             </div>
           </form>
 
-      <!-- End card body class -->
+        <!-- End card body class -->
+        </div>
+      <!-- End collapseOne -->
       </div>
-    <!-- End collapseOne -->
-    </div>
     <!-- End card -->
+    </div>
+  <!-- End accordian -->
   </div>
-<!-- End accordian -->
-</div>
 
 <section class="container">
   <div class="row all-vehicles">
