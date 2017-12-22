@@ -35,8 +35,8 @@ $(document).ready(function() {
       <h5 id="vehicle.year" class="card-text">${vehicle.year}, ${vehicle.color}</h5> 
       <p class="card-text">${newValues}</p>
       
-      <button type="button" class="edit-vehicle btn btn-primary" data-toggle="modal" data-target="#modal-${vehicle._id}" data-id=${vehicle._id}>Edit</button>
-      <button class="delete-vehicle btn btn-danger" data-id=${vehicle._id}>Delete</button>
+      <button type="button" class="edit-btn btn-primary" data-toggle="modal" data-target="#modal-${vehicle._id}" data-id=${vehicle._id}>Edit</button>
+      <button class="delete-btn btn-danger" data-id=${vehicle._id}>Delete</button>
 			
 			<!-- Modal -->
 			<div class="modal fade" id="modal-${vehicle._id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -186,7 +186,7 @@ $(document).ready(function() {
   	console.log("Error deleting vehicle: " + err);
   }
 
-  $('.all-vehicles').on('click', '.edit-vehicle', function handleVehicleEditClick(e) {
+  $('.all-vehicles').on('click', '.edit-btn', function handleVehicleEditClick(e) {
 		console.log ('edit button clicked');
 	});
 
