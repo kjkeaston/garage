@@ -38,100 +38,99 @@ $(document).ready(function() {
       <button type="button" class="edit-btn btn-primary" data-toggle="modal" data-target="#modal-${vehicle._id}" data-id=${vehicle._id}>Edit</button>
       <button class="delete-btn btn-danger" data-id=${vehicle._id}>Delete</button>
 			
-			<!-- Modal -->
-			<div class="modal fade" id="modal-${vehicle._id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-		        	<form class="col-md-6" data-id="${vehicle._id}">
-                <ul>
-                  <div class="row pull-left">
-                    <div class="col-md-12 text-center">
-                      <label for="make">Make</label>
-                      <input name="make" type="text" id="make" value="${vehicle.make}">
-                    
-                      <label for="model">Model</label>
-                      <input name="model" type="text" id="model" value="${vehicle.model}">
-                    </div>
+			<!-- Modal Start -->
+      <div class="modal fade" id="modal-${vehicle._id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        
+        <div class="modal-dialog" role="document">
+          
+          <div class="modal-content">
+            
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Vehicle Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form data-id="${vehicle._id}">
+                <div class="row">
+                  <div class="col-md-12 text-center vehicle-text-field-edit-modal">
+                    <label for="make">Make</label>
+                    <input name="make" type="text" id="make" value="${vehicle.make}">
+                  
+                    <label for="model">Model</label>
+                    <input name="model" type="text" id="model" value="${vehicle.model}">
+
+                    <label for="year">Year</label>
+                    <input name="year" type="text" id="year" value="${vehicle.year}">
+
+                    <label for="color">Color</label>
+                    <input name="color" type="text" id="color" value="${vehicle.color}">
+                    <label for="image">Image</label>
+                    <input name="image" type="text" id="image" value="${vehicle.image}">
                   </div>
-
-                  <div class="row pull-left">
-                    <div class="col-md-12 text-center">
-                      <label for="year">Year</label>
-                      <input name="year" type="text" id="year" value="${vehicle.year}">
-
-                      <label for="color">Color</label>
-                      <input name="color" type="text" id="color" value="${vehicle.color}">
-                    </div>
-                  </div>
-                  <div class="row pull-left">
-                    <div class="col-md-12 text-center">
-                      <label for="image">Image</label>
-                      <input name="image" type="text" id="image" value="${vehicle.image}">
-                    </div>
-                  </div>
-                </ul>
-          			<!-- Category selections -->
-              	<div class="col-md-6">
-	                <h4>Add vehicle categories</h4>
-
-	                <div class="form-check form-check-inline">
-	                  <label class="form-check-label">
-	                  <input ${ newValues.includes('Luxury') ? 'checked' : '' } name="categories[0][name]"  class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Luxury">Luxury
-	                  </label>
-	                </div>
-
-	                <div class="form-check form-check-inline">
-	                  <label class="form-check-label">
-	                  <input ${ newValues.includes('Sport') ? 'checked' : '' } name="categories[1][name]" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Sport">Sport
-	                  </label>
-	                </div>
-
-	                <div class="form-check form-check-inline">
-	                  <label class="form-check-label">
-	                  <input ${ newValues.includes('Muscle') ? 'checked' : '' } name="categories[2][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Muscle">Muscle
-	                  </label>
-	                </div>
-
-	                <div class="form-check form-check-inline">
-	                  <label class="form-check-label">
-	                  <input ${ newValues.includes('Exotic') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Exotic">Exotic
-	                  </label>
-	                </div>
-
-	                <div class="form-check form-check-inline">
-	                  <label class="form-check-label">
-	                  <input ${ newValues.includes('SUV') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="SUV">SUV
-	                  </label>
-	                </div>
-
-	                <div class="form-check form-check-inline">
-	                  <label class="form-check-label">
-	                  <input ${ newValues.includes('Pick-up') ? 'checked' : '' } name="categories[5][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Pick-up">Pick-up
-	                  </label>
-	                </div>
-
-	                <div class="form-check form-check-inline">
-                  <label class="form-check-label">
-                  <input ${ newValues.includes('Sedan') ? 'checked' : '' } name="categories[6][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sedan">Sedan
-                  </label>
                 </div>
+
+                <!-- Category selections -->
+                <div class="row">
+                  <div class="col-md-12 text">
+                    <h4>Add vehicle categories</h4>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('Luxury') ? 'checked' : '' } name="categories[0][name]"  class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Luxury">Luxury
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('Sport') ? 'checked' : '' } name="categories[1][name]" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Sport">Sport
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('Muscle') ? 'checked' : '' } name="categories[2][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Muscle">Muscle
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('Exotic') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Exotic">Exotic
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('SUV') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="SUV">SUV
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('Pick-up') ? 'checked' : '' } name="categories[5][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Pick-up">Pick-up
+                      </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                      <input ${ newValues.includes('Sedan') ? 'checked' : '' } name="categories[6][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sedan">Sedan
+                      </label>
+                    </div>
+                  </div> 
+                </div>  
               </form>
-	          </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-btn-modal" data-id=${vehicle._id}>Save changes</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- End of Modal -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-btn-modal" data-id=${vehicle._id}>Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End of Modal -->
+
     </div>`
 
   $('.all-vehicles').prepend(carHTML);
