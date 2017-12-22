@@ -21,23 +21,117 @@ $(document).ready(function() {
 
 
   function renderVehicle (vehicle) {
-    
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
-    });
-    newValues = newValues.join(', ');
+		});
+    newValues = newValues.join(', '); // 'Luxury, Sport'
 	    
     let carHTML = 
 
     `<div class="card whole-vehicle-card" id="${vehicle._id}" style="width: 20rem;">
       <img class="card-img-top vehicle-image" src=${vehicle.image}> 
-        <h3 class="card-title">${vehicle.make}</h3>
-        <h4 class="card-text">${vehicle.model}</h4>
-        <h5 class="card-text">${vehicle.year}, ${vehicle.color}</h5>
-        <p class="card-text new-cats">${newValues}</p>
-        <button class="edit-btn btn-outline-info" data-id=${vehicle._id}>Edit</button>
-        <button class="save-btn btn btn-outline-success" data-id=${vehicle._id}>Save</button>
-        <button class="delete-btn btn-outline-danger" data-id=${vehicle._id}>Delete</button>
+      <h3 class="card-title">${vehicle.make}</h3>
+      <h4 class="card-text">${vehicle.model}</h4>
+      <h5 id="vehicle.year" class="card-text">${vehicle.year}, ${vehicle.color}</h5> 
+      <p class="card-text">${newValues}</p>
+      
+      <button type="button" class="edit-vehicle btn btn-primary" data-toggle="modal" data-target="#modal-${vehicle._id}" data-id=${vehicle._id}>Edit</button>
+      <button class="delete-vehicle btn btn-danger" data-id=${vehicle._id}>Delete</button>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="modal-${vehicle._id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+		        	<form class="col-md-6" data-id="${vehicle._id}">
+                <ul>
+                  <div class="row pull-left">
+                    <div class="col-md-12 text-center">
+                      <label for="make">Make</label>
+                      <input name="make" type="text" id="make" value="${vehicle.make}">
+                    
+                      <label for="model">Model</label>
+                      <input name="model" type="text" id="model" value="${vehicle.model}">
+                    </div>
+                  </div>
+
+                  <div class="row pull-left">
+                    <div class="col-md-12 text-center">
+                      <label for="year">Year</label>
+                      <input name="year" type="text" id="year" value="${vehicle.year}">
+
+                      <label for="color">Color</label>
+                      <input name="color" type="text" id="color" value="${vehicle.color}">
+                    </div>
+                  </div>
+                  <div class="row pull-left">
+                    <div class="col-md-12 text-center">
+                      <label for="image">Image</label>
+                      <input name="image" type="text" id="image" value="${vehicle.image}">
+                    </div>
+                  </div>
+                </ul>
+          			<!-- Category selections -->
+              	<div class="col-md-6">
+	                <h4>Add vehicle categories</h4>
+
+	                <div class="form-check form-check-inline">
+	                  <label class="form-check-label">
+	                  <input ${ newValues.includes('Luxury') ? 'checked' : '' } name="categories[0][name]"  class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Luxury">Luxury
+	                  </label>
+	                </div>
+
+	                <div class="form-check form-check-inline">
+	                  <label class="form-check-label">
+	                  <input ${ newValues.includes('Sport') ? 'checked' : '' } name="categories[1][name]" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Sport">Sport
+	                  </label>
+	                </div>
+
+	                <div class="form-check form-check-inline">
+	                  <label class="form-check-label">
+	                  <input ${ newValues.includes('Muscle') ? 'checked' : '' } name="categories[2][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Muscle">Muscle
+	                  </label>
+	                </div>
+
+	                <div class="form-check form-check-inline">
+	                  <label class="form-check-label">
+	                  <input ${ newValues.includes('Exotic') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Exotic">Exotic
+	                  </label>
+	                </div>
+
+	                <div class="form-check form-check-inline">
+	                  <label class="form-check-label">
+	                  <input ${ newValues.includes('SUV') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="SUV">SUV
+	                  </label>
+	                </div>
+
+	                <div class="form-check form-check-inline">
+	                  <label class="form-check-label">
+	                  <input ${ newValues.includes('Pick-up') ? 'checked' : '' } name="categories[5][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Pick-up">Pick-up
+	                  </label>
+	                </div>
+
+	                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                  <input ${ newValues.includes('Sedan') ? 'checked' : '' } name="categories[6][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sedan">Sedan
+                  </label>
+                </div>
+              </form>
+	          </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-btn-modal" data-id=${vehicle._id}>Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- End of Modal -->
     </div>`
 
   $('.all-vehicles').prepend(carHTML);
@@ -59,7 +153,6 @@ $(document).ready(function() {
   })
 
   function postNewVehicle(newVehicle) {
-  	console.log(newVehicle);
   	renderVehicle(newVehicle);
   }
 
@@ -93,44 +186,51 @@ $(document).ready(function() {
   	console.log("Error deleting vehicle: " + err);
   }
 
-  $('.all-vehicles').on('click', '.edit-btn', handleVehicleEditClick);
+  $('.all-vehicles').on('click', '.edit-vehicle', function handleVehicleEditClick(e) {
+		console.log ('edit button clicked');
+	});
 
-  	function handleVehicleEditClick(e) {
-  		console.log ('edit button clicked');
-  		// $('.save-vehicle').toggleClass('show');
-  		// $('.edit-vehicle').toggleClass('hidden');
-  		var data = {
-  			 		image: $('#vehicle.image').serialize(),
-					make: $('#vehicle.make').serialize(),
-					model: $('#vehicle.model').serialize(),
-					year: $('#vehicle.year').serialize(),
-					color: $('#vehicle.color').serialize(),
-					categories: $('#vehicle.newValues').serialize()
-  		}
- 
-	  
-
-	  $('.all-vehicles').on('click', '.save-btn', handleVehicleSaveClick);
-
-	  function handleVehicleSaveClick(e) {
-	  	$.ajax({
-	  		method: 'PUT',
-	  		url: '/api/vehicles/' + $('#vehicle-card').attr('data-id'),
-	  		data: data,
-	  		success: editVehicleSuccess,
-	  		error: editVehicleError
-	  	});
-	  }
-
-	}
-
+  $('.all-vehicles').on('click', '#save-btn-modal', function handleVehicleSaveClick(e) {
+  	console.log('save button clicked');
+  	console.log($(`form[data-id="${$(this).attr('data-id')}"]`).serialize());
+   
+  	$.ajax({
+  		method: 'PUT',
+  		url: '/api/vehicles/' + $(this).attr('data-id'), // the data-id on the button you just clicked
+  		data: $(`form[data-id="${$(this).attr('data-id')}"]`).serialize(), // {make: 'bmw!!!!', model: 2001}
+  		success: editVehicleSuccess,
+  		error: editVehicleError
+  	});
+	});
+	
 
   function editVehicleSuccess (editedVehicle) {
-  	console.log (editedVehicle);
-  	//$('#vehicle-card').attr('data-id').remove();
-  	renderVehicle(editedVehicle);
-  }
+  	//debugger;
 
+  	// OPTION 2
+  	// remove all cars from the container
+  	// get all cars again from DB (ajax)
+  	// render each car
+
+  	$('.all-vehicles').empty();
+
+  	$.ajax({
+    method: 'GET',
+    url: '/api/vehicles',
+    success: onSuccess,
+    error: function getError (data) {
+      				console.log("error getting vehicles" + data);
+    			}
+  	})
+
+	  function onSuccess (vehicles) {
+	    	console.log(vehicles);
+	    vehicles.forEach(function(vehicle) {
+	      renderVehicle(vehicle);
+	    });
+	  }
+
+  }
 
 
   function editVehicleError (err) {
