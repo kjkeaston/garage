@@ -170,7 +170,7 @@ $(document).ready(function() {
   	console.log('delete button clicked');
 	$.ajax({
 		method: 'DELETE',
-		url: '/api/vehicles/' + $('.delete-btn').attr('data-id'),
+		url: '/api/vehicles/' + $(this).attr('data-id'),
 		success: deleteVehicleSuccess,
 		error: deleteVehicleError
 	});
