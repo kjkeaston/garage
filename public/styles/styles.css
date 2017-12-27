@@ -42,6 +42,7 @@ h1 {
 
 #image {
   width: inherit;
+  margin-left: 0px;
 }
 
 .input-label {
@@ -63,8 +64,17 @@ h1 {
   border-radius: 0px;
 }
 
-.vehicle-text-field-edit-modal {
-  margin-bottom: 40px;
+.edit-modal-image-field-row {
+  margin-bottom: 20px;
+}
+
+.edit-modal-fields {
+  margin: 5px;
+}
+
+.edit-modal-field-labels {
+  margin-top: 8px;
+  margin-bottom: 0px;
 }
 
 

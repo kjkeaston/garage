@@ -55,20 +55,25 @@ $(document).ready(function() {
             <div class="modal-body">
               <form data-id="${vehicle._id}">
                 <div class="row">
-                  <div class="col-md-12 text-center vehicle-text-field-edit-modal">
-                    <label for="make">Make</label>
-                    <input name="make" type="text" id="make" value="${vehicle.make}">
+                  <div class="col-md-6">
+                    <label class="edit-modal-field-labels" for="make">Make</label>
+                    <input class="edit-modal-fields" name="make" type="text" id="make" value="${vehicle.make}">
                   
-                    <label for="model">Model</label>
-                    <input name="model" type="text" id="model" value="${vehicle.model}">
+                    <label class="edit-modal-field-labels" for="model">Model</label>
+                    <input class="edit-modal-fields" name="model" type="text" id="model" value="${vehicle.model}">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="edit-modal-field-labels" for="year">Year</label>
+                    <input class="edit-modal-fields" name="year" type="text" id="year" value="${vehicle.year}">
 
-                    <label for="year">Year</label>
-                    <input name="year" type="text" id="year" value="${vehicle.year}">
-
-                    <label for="color">Color</label>
-                    <input name="color" type="text" id="color" value="${vehicle.color}">
-                    <label for="image">Image</label>
-                    <input name="image" type="text" id="image" value="${vehicle.image}">
+                    <label class="edit-modal-field-labels" for="color">Color</label>
+                    <input class="edit-modal-fields" name="color" type="text" id="color" value="${vehicle.color}">
+                  </div>
+                </div>
+                <div class="row edit-modal-image-field-row">
+                  <div class="col-md-12 text-center">
+                    <label class="edit-modal-field-labels" for="image">Image URL</label>
+                    <input class="edit-modal-fields" name="image" type="text" id="image" value="${vehicle.image}">
                   </div>
                 </div>
 
