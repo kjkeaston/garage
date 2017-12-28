@@ -16,37 +16,10 @@ h1 {
   font-size: 90px;
 }
 
-.vehicle-image {
-	height: 210px;
-	width: 320px;
-  border-radius: 20px;
-}
-
-.whole-vehicle-card {
-  margin: 10px;
-  border-radius: 20px;
-}
-
 .categories-nav-btn, #all-categories-btn {
   align-content: center;
   padding: 5px 20px;
   margin-right: 50px;
-}
-
-.edit-btn, .delete-btn, .save-btn  {
-  margin: 10px;
-  width: 100px;
-  border-radius: 20px;
-  align-self: center;
-}
-
-#image {
-  width: inherit;
-  margin-left: 0px;
-}
-
-.input-label {
-  margin: 5px 10px 15px 30px;
 }
 
 #add-new-vehicle-button {
@@ -60,10 +33,17 @@ h1 {
   margin: -1px -1px;
 }
 
-.card-header:first-child {
-  border-radius: 0px;
+.input-label {
+  margin: 5px 10px 15px 30px;
 }
 
+#image {
+  width: inherit;
+  margin-left: 0px;
+}
+
+
+/*EDIT MODAL*/
 .edit-modal-image-field-row {
   margin-bottom: 20px;
 }
@@ -78,5 +58,38 @@ h1 {
 }
 
 
+/*VEHICLE CARDS*/
+.card-header:first-child {
+  border-radius: 0px;
+}
+
+.vehicle-image {
+  height: 210px;
+  width: 320px;
+  border-radius: 20px;
+}
+
+.whole-vehicle-card {
+  margin: 10px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #17A2B8;
+}
+
+h3.card-title {
+  margin-bottom: 0px;
+}
+
+h5.card-text, p.card-text {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.edit-btn, .delete-btn {
+  margin: 10px;
+  width: 100px;
+  border-radius: 20px;
+  align-self: center;
+}
 
 
