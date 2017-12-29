@@ -17,5 +17,5 @@ Site can be found on Heroku at https://glacial-headland-36146.herokuapp.com/
 
 
 ## Planned Features
-* A logged in experience where users can only edit and delete the vehicles they added. 
+* A logged in experience where users can only edit and delete the vehicles they added
 * An admin access feature for site admins to add vehicle categories from the FE
