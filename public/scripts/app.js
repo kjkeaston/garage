@@ -238,23 +238,24 @@ $(document).ready(function() {
       error: function categoryFilterError (data) {
         console.log("Error filtering for category: " + data);
       }
-    })
+    });
+  });
 
-    function categoryFilterSuccess (newCatCars) {
+function categoryFilterSuccess (newCatCars) {
       $(".all-vehicles").empty();
       newCatCars.forEach(renderVehicle);
     }
-  })
 
 // All vehicles from filter nav bar
   $("#all-categories-btn").on("click", function() {
       $.ajax({
       method: 'GET',
       url: '/api/vehicles',
-      success: onSuccess,
+      success: categoryFilterSuccess,
       error: function getError (data) {
         console.log("error getting vehicles" + data);
       }
     });
   });
+
 });
