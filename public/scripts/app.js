@@ -18,8 +18,6 @@ $(document).ready(function() {
     });
   }
 
-
-
   function renderVehicle (vehicle) {
     var newValues = vehicle.categories.map(function (obj) {
 	    return obj.name;
@@ -141,8 +139,6 @@ $(document).ready(function() {
   $('.all-vehicles').prepend(carHTML);
   }
   
-
-
   $('#add-new-vehicle-form').on('submit', function(e) {
   	e.preventDefault();
   	console.log ('new vehicle ', $(this).serialize());
@@ -165,11 +161,7 @@ $(document).ready(function() {
   }
 
 
-
-
-
-
-
+// Vehicle Delete
   $('.all-vehicles').on('click', '.delete-btn', function(e) {
   	console.log('delete button clicked');
 	$.ajax({
@@ -190,6 +182,8 @@ $(document).ready(function() {
   	console.log("Error deleting vehicle: " + err);
   }
 
+
+// Vehicle Edit
   $('.all-vehicles').on('click', '.edit-btn', function handleVehicleEditClick(e) {
 		console.log ('edit button clicked');
 	});
@@ -207,7 +201,6 @@ $(document).ready(function() {
   	});
 	});
 	
-
   function editVehicleSuccess (editedVehicle) {
   	$('.all-vehicles').empty();
 
@@ -216,19 +209,17 @@ $(document).ready(function() {
     url: '/api/vehicles',
     success: onSuccess,
     error: function getError (data) {
-      				console.log("error getting vehicles" + data);
-    			}
-  	})
+      console.log("error getting vehicles" + data);
+    	}
+  	});
 
 	  function onSuccess (vehicles) {
-	    	console.log(vehicles);
-	    vehicles.forEach(function(vehicle) {
+	    console.log(vehicles);
+	    vehicles.forEach(function (vehicle) {
 	      renderVehicle(vehicle);
 	    });
 	  }
-
   }
-
 
   function editVehicleError (err) {
   	console.log ('Error edit vehicle: ' + err);
@@ -266,7 +257,4 @@ $(document).ready(function() {
       }
     });
   });
-
-
-
 });
