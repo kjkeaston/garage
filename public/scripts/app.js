@@ -31,9 +31,17 @@ $(document).ready(function() {
         <label class="edit-modal-field-labels" for="${field}">${field}</label>
         <input class="edit-modal-fields" name="${field}" type="text" id="${field}" value="${vehicle[field]}">`;
     })
+    let categories = ["Luxury", "Sport", "SUV", "Muscle", "Pick-up", "Sedan", "Exotic"];
+    let categoriesHTML = categories.map(function(cat, i) {
+      return `<div class="form-check form-check-inline">
+        <label class="form-check-label">
+        <input ${ newValues.includes(cat) ? 'checked' : '' } name="categories[${i}][name]"  class="form-check-input" type="checkbox" id="inlineCheckbox1" value="${cat}">${cat}
+        </label>
+      </div>`
+    })
+
 
     let carHTML =
-
     `<div class="card whole-vehicle-card" id="${vehicle._id}" style="width: 20rem;">
       <img class="card-img-top vehicle-image" src=${vehicle.image}>
       <h3 class="card-title">${vehicle.make}</h3>
@@ -80,47 +88,7 @@ $(document).ready(function() {
                   <div class="col-md-12 text">
                     <h4>Add vehicle categories</h4>
 
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('Luxury') ? 'checked' : '' } name="categories[0][name]"  class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Luxury">Luxury
-                      </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('Sport') ? 'checked' : '' } name="categories[1][name]" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Sport">Sport
-                      </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('Muscle') ? 'checked' : '' } name="categories[2][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Muscle">Muscle
-                      </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('Exotic') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Exotic">Exotic
-                      </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('SUV') ? 'checked' : '' } name="categories[3][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="SUV">SUV
-                      </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('Pick-up') ? 'checked' : '' } name="categories[5][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Pick-up">Pick-up
-                      </label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                      <input ${ newValues.includes('Sedan') ? 'checked' : '' } name="categories[6][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sedan">Sedan
-                      </label>
-                    </div>
+                    ${categoriesHTML.join("")}
                   </div>
                 </div>
               </form>
