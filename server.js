@@ -1,5 +1,5 @@
-let express = require('express');
-	  db = require('./models');
+let express = require('express'),
+	  db = require('./models'),
 	  bodyParser = require('body-parser');
 
 let app = express();

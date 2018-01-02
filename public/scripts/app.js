@@ -20,29 +20,30 @@ $(document).ready(function() {
 
   function renderVehicle (vehicle) {
     var newValues = vehicle.categories.map(function (obj) {
+
 	    return obj.name;
 		});
     newValues = newValues.join(', '); // 'Luxury, Sport'
-	    
-    let carHTML = 
+
+    let carHTML =
 
     `<div class="card whole-vehicle-card" id="${vehicle._id}" style="width: 20rem;">
-      <img class="card-img-top vehicle-image" src=${vehicle.image}> 
+      <img class="card-img-top vehicle-image" src=${vehicle.image}>
       <h3 class="card-title">${vehicle.make}</h3>
       <h4 class="card-text">${vehicle.model}</h4>
-      <h5 id="vehicle.year" class="card-text">${vehicle.year}, ${vehicle.color}</h5> 
+      <h5 class="card-text">${vehicle.year}, ${vehicle.color}</h5>
       <p class="card-text">${newValues}</p>
-      
+
       <button type="button" class="edit-btn btn-primary" data-toggle="modal" data-target="#modal-${vehicle._id}" data-id=${vehicle._id}>Edit</button>
       <button class="delete-btn btn-danger" data-id=${vehicle._id}>Delete</button>
-			
+
 			<!-- Modal Start -->
       <div class="modal fade" id="modal-${vehicle._id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        
+
         <div class="modal-dialog" role="document">
-          
+
           <div class="modal-content">
-            
+
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit Vehicle Details</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -56,7 +57,7 @@ $(document).ready(function() {
                   <div class="col-md-6">
                     <label class="edit-modal-field-labels" for="make">Make</label>
                     <input class="edit-modal-fields" name="make" type="text" id="make" value="${vehicle.make}">
-                  
+
                     <label class="edit-modal-field-labels" for="model">Model</label>
                     <input class="edit-modal-fields" name="model" type="text" id="model" value="${vehicle.model}">
                   </div>
@@ -121,8 +122,8 @@ $(document).ready(function() {
                       <input ${ newValues.includes('Sedan') ? 'checked' : '' } name="categories[6][name]" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Sedan">Sedan
                       </label>
                     </div>
-                  </div> 
-                </div>  
+                  </div>
+                </div>
               </form>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -138,7 +139,7 @@ $(document).ready(function() {
 
   $('.all-vehicles').prepend(carHTML);
   }
-  
+
   $('#add-new-vehicle-form').on('submit', function(e) {
   	e.preventDefault();
   	console.log ('new vehicle ', $(this).serialize());
@@ -191,7 +192,7 @@ $(document).ready(function() {
   $('.all-vehicles').on('click', '#save-btn-modal', function handleVehicleSaveClick(e) {
   	console.log('save button clicked');
   	console.log($(`form[data-id="${$(this).attr('data-id')}"]`).serialize());
-   
+
   	$.ajax({
   		method: 'PUT',
   		url: '/api/vehicles/' + $(this).attr('data-id'), // the data-id on the button you just clicked
@@ -200,7 +201,7 @@ $(document).ready(function() {
   		error: editVehicleError
   	});
 	});
-	
+
   function editVehicleSuccess (editedVehicle) {
   	$('.all-vehicles').empty();
 
