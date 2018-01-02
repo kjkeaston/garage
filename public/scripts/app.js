@@ -25,6 +25,13 @@ $(document).ready(function() {
 		});
     newValues = newValues.join(', '); // 'Luxury, Sport'
 
+    let fields = ["make", "model", "year", "color"];
+    let fieldsHTML = fields.map(function(field) {
+      return `
+        <label class="edit-modal-field-labels" for="${field}">${field}</label>
+        <input class="edit-modal-fields" name="${field}" type="text" id="${field}" value="${vehicle[field]}">`;
+    })
+
     let carHTML =
 
     `<div class="card whole-vehicle-card" id="${vehicle._id}" style="width: 20rem;">
@@ -55,18 +62,10 @@ $(document).ready(function() {
               <form data-id="${vehicle._id}">
                 <div class="row">
                   <div class="col-md-6">
-                    <label class="edit-modal-field-labels" for="make">Make</label>
-                    <input class="edit-modal-fields" name="make" type="text" id="make" value="${vehicle.make}">
-
-                    <label class="edit-modal-field-labels" for="model">Model</label>
-                    <input class="edit-modal-fields" name="model" type="text" id="model" value="${vehicle.model}">
+                    ${fieldsHTML[0]} ${fieldsHTML[1]}
                   </div>
                   <div class="col-md-6">
-                    <label class="edit-modal-field-labels" for="year">Year</label>
-                    <input class="edit-modal-fields" name="year" type="text" id="year" value="${vehicle.year}">
-
-                    <label class="edit-modal-field-labels" for="color">Color</label>
-                    <input class="edit-modal-fields" name="color" type="text" id="color" value="${vehicle.color}">
+                  ${fieldsHTML[2]} ${fieldsHTML[3]}
                   </div>
                 </div>
                 <div class="row edit-modal-image-field-row">
