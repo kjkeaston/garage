@@ -1,5 +1,6 @@
 .jumbotron {
-  background-image: url(../images/car_jumbo_cropped.png);
+  /* you should use urls from the base of your site, not from the current location. */
+  background-image: url(/images/car_jumbo_cropped.png);
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 0px;
@@ -96,5 +97,3 @@ h5.card-text, p.card-text {
   border-radius: 20px;
   align-self: center;
 }
-
-

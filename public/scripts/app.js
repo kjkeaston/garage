@@ -13,6 +13,8 @@ $(document).ready(function() {
 
   function onSuccess (vehicles) {
     console.log(vehicles);
+    // let this function handle all successes
+    $(".all-vehicles").empty();
     vehicles.forEach(function(vehicle) {
       renderVehicle(vehicle);
     });
@@ -107,6 +109,7 @@ $(document).ready(function() {
   $('.all-vehicles').prepend(carHTML);
   }
 
+// the mix of tabs and spaces in here scares me
   $('#add-new-vehicle-form').on('submit', function(e) {
   	e.preventDefault();
   	console.log ('new vehicle ', $(this).serialize());
@@ -115,14 +118,12 @@ $(document).ready(function() {
   		method: 'POST',
   		url: '/api/vehicles',
   		data: $('#add-new-vehicle-form').serialize(),
-  		success: postNewVehicle,
+  		success: renderVehicle,
   		error: addNewVehicleError
   	})
   })
 
-  function postNewVehicle(newVehicle) {
-  	renderVehicle(newVehicle);
-  }
+  // this function was just calling another function, so I replaced it with the other function
 
   function addNewVehicleError(err) {
   	console.log ('Error adding vehicle: ' + err);
@@ -132,13 +133,13 @@ $(document).ready(function() {
 // Vehicle Delete
   $('.all-vehicles').on('click', '.delete-btn', function(e) {
   	console.log('delete button clicked');
-	$.ajax({
-		method: 'DELETE',
-		url: '/api/vehicles/' + $(this).attr('data-id'),
-		success: deleteVehicleSuccess,
-		error: deleteVehicleError
-	});
-});
+  	$.ajax({
+  		method: 'DELETE',
+  		url: '/api/vehicles/' + $(this).attr('data-id'),
+  		success: deleteVehicleSuccess,
+  		error: deleteVehicleError
+  	});
+  });
 
   function deleteVehicleSuccess (deletedVehicle) {
   	console.log (deletedVehicle);
@@ -152,9 +153,7 @@ $(document).ready(function() {
 
 
 // Vehicle Edit
-  $('.all-vehicles').on('click', '.edit-btn', function handleVehicleEditClick(e) {
-		console.log ('edit button clicked');
-	});
+  // function not necessary
 
   $('.all-vehicles').on('click', '#save-btn-modal', function handleVehicleSaveClick(e) {
   	console.log('save button clicked');
@@ -171,7 +170,7 @@ $(document).ready(function() {
 
   function editVehicleSuccess (editedVehicle) {
   	$('.all-vehicles').empty();
-
+    // woah! why do we have to completely reload every car to show this one edited one??? would make more sense to just change that one on the page.
   	$.ajax({
     method: 'GET',
     url: '/api/vehicles',
@@ -181,12 +180,7 @@ $(document).ready(function() {
     	}
   	});
 
-	  function onSuccess (vehicles) {
-	    console.log(vehicles);
-	    vehicles.forEach(function (vehicle) {
-	      renderVehicle(vehicle);
-	    });
-	  }
+    // onSuccess function is already defined elsewhere
   }
 
   function editVehicleError (err) {
@@ -196,23 +190,20 @@ $(document).ready(function() {
 
 // Filter by vehicle category
   $(".categories-nav-btn").on("click", function () {
-    // console.log($(this).attr("value"));
+    // remove dead code
     let category = $(this).attr("value");
 
     $.ajax({
       method: "GET",
       url: "/api/vehicles_by_category/" + category,
-      success: categoryFilterSuccess,
+      success: onSuccess,
       error: function categoryFilterError (data) {
         console.log("Error filtering for category: " + data);
       }
     });
   });
 
-function categoryFilterSuccess (newCatCars) {
-      $(".all-vehicles").empty();
-      newCatCars.forEach(renderVehicle);
-    }
+// can consolidate with standard onSuccess function
 
 // All vehicles from filter nav bar
   $("#all-categories-btn").on("click", function() {

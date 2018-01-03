@@ -63,9 +63,7 @@ app.put('/api/vehicles/:id', function update(req, res) {
       color: req.body.color,
       categories: req.body.categories
     }, {new: true}, function (err, updatedVehicle) {
-
-    res.json(updatedVehicle);
-
+      res.json(updatedVehicle);
   });
 });
 
@@ -79,12 +77,7 @@ app.get('/api/vehicles_by_category/:category', function index(req, res) {
     res.json(data);
   })
 });
-
-
-
-
-
-
+// so many newlines
 
 app.listen(process.env.PORT || 3000, function () {
 	console.log ('Express server is up and running on http://localhost:3000/');

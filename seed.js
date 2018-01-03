@@ -4,37 +4,37 @@ let db = require('./models');
 let allCategories = [
 {
   name: "Luxury"
-}, 
+},
 {
   name: "Sport"
-}, 
+},
 {
   name: "Muscle"
-}, 
+},
 {
   name: "Exotic"
-}, 
+},
 {
   name: "SUV"
-}, 
+},
 {
   name: "Pick-up"
-}, 
+},
 {
   name: "Sedan"
 }
-]; 
+];
 
 
 let allVehicles = [
-	{
-	make: "Mercedes-Benz",
-	model: "S-Class",
-	year: "2016",
-	color: "Silver",
-	image: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg",
+  {
+    make: "Mercedes-Benz",
+    model: "S-Class",
+    year: "2016",
+    color: "Silver",
+    image: "http://strongauto.net/wp-content/uploads/images/2014-Mercedes-Benz-S-Class_3069.jpg",
     categories: [allCategories[0], allCategories[6]] //{name: "luxury"}
-	},
+  },
   {
     make: "BMW",
     model: "M5",
@@ -53,10 +53,7 @@ let allVehicles = [
   }
 ];
 
-
-// allVehicles.forEach(function(vehicles) {
-//   vehicles.categories = allCategories;
-// })
+// remove dead code
 
 
 db.Vehicle.remove({}, function(err, vehicles){
@@ -69,4 +66,3 @@ db.Vehicle.remove({}, function(err, vehicles){
     process.exit();
   });
 });
-
